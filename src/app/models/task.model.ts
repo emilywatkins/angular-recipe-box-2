@@ -1,3 +1,4 @@
 export class Recipe {
-  constructor(public title: string, public ingredients: string, public directions: string) { }
+  public done: boolean = false;
+  constructor(public title: string, public ingredients: [string], public directions: string, public hours: number) { }
 }

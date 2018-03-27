@@ -2,11 +2,45 @@
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
+    <h1>Welcome, {{userName}}!</h1>
   </h1>
+  <h2>{{year}}.{{month}}.{{day}}</h2>
   <div class="jumbotron">
+    <form>
+      <input [(ngModel)]="userName" type="text" name="user">
+    </form>
     <ul>
-      <li *ngFor="let currentRecipe of recipes">{{currentRecipe.title}}, {{currentRecipe.ingredients}}, {{currentRecipe.directions}}</li>
+      <li [class]="hoursColor(currentRecipe)" *ngFor="let currentRecipe of recipes">{{currentRecipe.title}}<button (click)='editRecipe(currentRecipe)'>EDIT</button><button (click)='viewRecipe(currentRecipe)'>VIEW</button></li>
     </ul>
+    <div *ngIf="selectedEdit">
+      <h3>{{selectedEdit.title}}</h3>
+      <p>Recipe Complete? {{selectedEdit.done}}</p>
+      <h3>Edit Recipe</h3>
+      <label>Enter Recipe Title:</label>
+      <input [(ngModel)]="selectedEdit.title">
+      <label>Enter Recipe Hours (1-3):</label>
+      <br>
+      <input type="radio" [(ngModel)]="selectedEdit.hours" [value]="1">1 (Quick Eats)<br>
+      <input type="radio" [(ngModel)]="selectedEdit.hours" [value]="2">2 (Take Your time)<br>
+      <input type="radio" [(ngModel)]="selectedEdit.hours" [value]="3">3 (Slow Roast)
+      <br>
+      <button (click)="finishedEditing()">DONE EDITING, DINGUS</button>
+    </div>
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2XBymuxPjggXAW7aXgYF41fKi7jwLVvNtC6xJYJfaoPWZMw96" alt="">
+  </div>
+  <div class="card-block">
+    <div *ngIf="selectedView">
+      <h1>{{selectedView.title}}</h1>
+      <br>
+      <h4>Ingredients</h4>
+      <ul>
+        <li *ngFor="let currentIngredient of selectedView.ingredients">{{currentIngredient}}</li>
+      </ul>
+      <br>
+      <h4>Instructions</h4>
+      <p>{{selectedView.directions}}</p>
+
+
+    </div>
   </div>
 </div>
