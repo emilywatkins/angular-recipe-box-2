@@ -9,9 +9,7 @@
     <form>
       <input [(ngModel)]="userName" type="text" name="user">
     </form>
-    <ul>
-      <li [class]="hoursColor(currentRecipe)" *ngFor="let currentRecipe of recipes">{{currentRecipe.title}}<button (click)='editRecipe(currentRecipe)'>EDIT</button><button (click)='viewRecipe(currentRecipe)'>VIEW</button></li>
-    </ul>
+    <app-recipe-list [childRecipeList]="masterRecipeList" (clickSender)="editRecipe($event)"></app-recipe-list>
     <div *ngIf="selectedEdit">
       <h3>{{selectedEdit.title}}</h3>
       <p>Recipe Complete? {{selectedEdit.done}}</p>
