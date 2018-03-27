@@ -1,0 +1,14 @@
+<div *ngIf="selectedEdit">
+  <h3>{{selectedEdit.title}}</h3>
+  <p>Recipe Complete? {{selectedEdit.done}}</p>
+  <h3>Edit Recipe</h3>
+  <label>Enter Recipe Title:</label>
+  <input [(ngModel)]="selectedEdit.title">
+  <label>Enter Recipe Hours (1-3):</label>
+  <br>
+  <input type="radio" [(ngModel)]="selectedEdit.hours" [value]="1">1 (Quick Eats)<br>
+  <input type="radio" [(ngModel)]="selectedEdit.hours" [value]="2">2 (Take Your time)<br>
+  <input type="radio" [(ngModel)]="selectedEdit.hours" [value]="3">3 (Slow Roast)
+  <br>
+  <button (click)="finishedEditing()">DONE EDITING, DINGUS</button>
+</div>

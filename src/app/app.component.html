@@ -10,20 +10,6 @@
       <input [(ngModel)]="userName" type="text" name="user">
     </form>
     <app-recipe-list [childRecipeList]="masterRecipeList" (clickSenderEdit)="editRecipe($event)" (clickSenderView)="viewRecipe($event)"></app-recipe-list>
-    <div *ngIf="selectedEdit">
-      <h3>{{selectedEdit.title}}</h3>
-      <p>Recipe Complete? {{selectedEdit.done}}</p>
-      <h3>Edit Recipe</h3>
-      <label>Enter Recipe Title:</label>
-      <input [(ngModel)]="selectedEdit.title">
-      <label>Enter Recipe Hours (1-3):</label>
-      <br>
-      <input type="radio" [(ngModel)]="selectedEdit.hours" [value]="1">1 (Quick Eats)<br>
-      <input type="radio" [(ngModel)]="selectedEdit.hours" [value]="2">2 (Take Your time)<br>
-      <input type="radio" [(ngModel)]="selectedEdit.hours" [value]="3">3 (Slow Roast)
-      <br>
-      <button (click)="finishedEditing()">DONE EDITING, DINGUS</button>
-    </div>
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2XBymuxPjggXAW7aXgYF41fKi7jwLVvNtC6xJYJfaoPWZMw96" alt="">
   </div>
   <div class="card-block">
@@ -40,5 +26,8 @@
 
 
     </div>
+  </div>
+  <div class="jumbotron">
+    <app-edit-recipe [selectedEdit]="selectedEdit" (clickedDone)="finishedEditing()"></app-edit-recipe>
   </div>
 </div>
