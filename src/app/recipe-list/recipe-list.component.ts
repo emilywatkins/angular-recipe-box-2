@@ -8,7 +8,8 @@ import { Recipe } from '../models/recipe.model';
 })
 export class RecipeListComponent {
   @Input() childRecipeList: Recipe[];
-  @Output() clickSender = new EventEmitter();
+  @Output() clickSenderEdit = new EventEmitter();
+  @Output() clickSenderView = new EventEmitter();
 
   hoursColor(currentRecipe) {
     if (currentRecipe.hours === 3) {
@@ -21,7 +22,11 @@ export class RecipeListComponent {
   }
 
   editButtonClicked(recipeToEdit: Recipe) {
-    this.clickSender.emit(recipeToEdit);
+    this.clickSenderEdit.emit(recipeToEdit);
+  }
+
+  viewButtonClicked(recipeToView: Recipe) {
+    this.clickSenderView.emit(recipeToView);
   }
 
   constructor() { }

@@ -1,3 +1,3 @@
 <ul>
-  <li [class]="hoursColor(currentRecipe)" *ngFor="let currentRecipe of childRecipeList">{{currentRecipe.title}}<button (click)='editButtonClicked(currentRecipe)'>EDIT</button><button (click)='viewRecipe(currentRecipe)'>VIEW</button></li>
+  <li [class]="hoursColor(currentRecipe)" *ngFor="let currentRecipe of childRecipeList">{{currentRecipe.title}}<button (click)='editButtonClicked(currentRecipe)'>EDIT</button><button (click)='viewButtonClicked(currentRecipe)'>VIEW</button></li>
 </ul>
